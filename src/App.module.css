@@ -1,34 +1,66 @@
 
-  .DataContainer {
-    margin: 20px 20px;
-    list-style: none;
-    counter-reset: li;
-  }
-  .DataContainer h3 {
-    color: rgb(234, 48, 48);
-  }
-  
-  .DataContainer div {
-    padding: 10px 0;
-    position: relative;
-    left: 1.5em;
-    margin-bottom: 0.75em;
-    padding-left: 1em;
-    background: var(--list-item-background);
-  }
-  .DataContainer div:before {
-    padding: 10px 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -1.5em;
-    width: 1.875em;
-    text-align: center;
-    color: var(--list-item-text-color);
-    font-weight: bold;
-    background: var(--list-item-counter-background);
-    border-bottom-left-radius: 70em;
-    border-top-left-radius: 70em;
-    counter-increment: li;
-    content: counter(li);
-  }
+.App {
+  text-align: center;
+  background: #1A1A40;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.Header {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+.Form {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.Input, .SearchInput {
+  outline: none;
+  background: none;
+  border: 1px solid #8758ff;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 300px;
+  color: #fff;
+}
+.Input::placeholder {
+  color: #ffffff4d;
+}
+.SearchInput {
+  margin-left: 0.5rem;
+}
+.AddBtn, .FilterBtn, .FilterBtnActived {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+.FilterBtn, .FilterBtnActived {
+  margin-bottom: 0.8rem;
+}
+.FilterBtnActived {
+  background: #9938da;
+  color: #fff; 
+}
+.List {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8758ff;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.EditBtn, .DelBtn {
+  cursor: pointer;
+  background: #1A1A40;
+  color: #fff;
+  border: none;
+  padding: 0.55rem;
+  margin: 0.2rem;
+}
