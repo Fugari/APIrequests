@@ -1,13 +1,16 @@
 {
-  "tasks": {
-    "5235": {
-      "text": "buy a car"
+ "tasks": [
+    {
+      "text": "buy a car",
+      "id": "1334"
     },
-    "6af6":{
+    {
+      "id": "6af6",
       "text": "Найди коробку"
     },
-    "a45b": {
+    {
+      "id": "a45b",
       "text": "search for the folder"
     }
-  }
+  ]
 }
