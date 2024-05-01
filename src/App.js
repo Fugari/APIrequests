@@ -24,10 +24,54 @@ function App() {
   }
   const sortedTaskList = toFileterButton();
 
+  const toGetData = async() => {
+    try {
+      const res = await fetch('http://localhost:3000/tasks')
+      const data = await res.json();
+      setTaskList(data)
+    }catch(e) {
+      console.log(e);
+    }
+  }
+
+  const toAddTask = async() => {
+    try {
+      await fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
+        body: JSON.stringify({text: newValue})
+    })
+    }catch(e) {
+      console.log(e);
+    }
+  }
+
+  const toEditTask = async(taskInput, taskId) => {
+    try {
+      await fetch(`http://localhost:3000/tasks/${taskId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({text: taskInput})
+    })
+
+    }catch(e) {
+      console.log(e);
+    }
+  }
+
+  const toDeleteTask = async(id) => {
+    try {
+      await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: 'DELETE'
+    })
+      setTaskList(tasksList.filter((task) => task.id !== id));
+    }catch(e) {
+      console.log(e);
+    }
+  }
+
   useEffect(() => {
-    fetch('http://localhost:3000/tasks')
-      .then((res) => res.json())
-      .then((data) => setTaskList(data))
+    toGetData();
   }, [tasksList]);
 
   return (
@@ -35,12 +79,14 @@ function App() {
       <Header/>
 
       <InputTask 
+        toAdd={toAddTask}
         input={newValue}
         setInput={setNewValue}
         tasks={tasksList}
         newTask={setTaskList}
         editTask={editTask}
         setEditTask={setEditTask}
+        updateTask={toEditTask}
       />
       <button onClick={() => setSortFilter(!sortFilter)} className={sortFilter ? styles.FilterBtnActived : styles.FilterBtn}>Filter from A-Z</button>
 
@@ -50,6 +96,7 @@ function App() {
         tasksList={sortedTaskList}
         setTaskList={setTaskList}
         setEditTask={setEditTask}
+        toDeleteTask={toDeleteTask}
       />
 
     </div>
