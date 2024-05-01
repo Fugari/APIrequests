@@ -1,16 +1,28 @@
 {
- "tasks": [
+  "tasks": [
     {
-      "text": "buy a car",
-      "id": "1334"
+      "id": "02f3",
+      "text": "task new added for ...."
     },
     {
-      "id": "6af6",
-      "text": "Найди коробку"
+      "id": "f8cb",
+      "text": "all letters"
     },
     {
-      "id": "a45b",
-      "text": "search for the folder"
+      "text": "none of them were there",
+      "id": "1dd1"
+    },
+    {
+      "id": "6326",
+      "text": "value of gold"
+    },
+    {
+      "id": "7518",
+      "text": "SoS"
+    },
+    {
+      "id": "311c",
+      "text": "the not to be empty"
     }
   ]
 }
