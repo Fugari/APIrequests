@@ -1,16 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from '../../src/App.module.css';
 
-export const InputTask = ({ input, setInput, editTask, setEditTask}) => {
-
-    const updateTask = (input, id) => {
-        fetch(`http://localhost:3000/tasks/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            body: JSON.stringify({text: input})
-        })
-        setEditTask('');
-    }
+export const InputTask = ({ input, setInput, editTask, setEditTask, toAdd, updateTask}) => {
 
     useEffect(() => {
         if(editTask) {
@@ -27,16 +18,12 @@ export const InputTask = ({ input, setInput, editTask, setEditTask}) => {
     const toSubmitForm = (e) => {
         e.preventDefault();
         if(!editTask) {
-            fetch('http://localhost:3000/tasks', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json;charset=utf-8'},
-                body: JSON.stringify({text: input})
-            })
+            toAdd();
             setInput('');
         } else {
             updateTask(input, editTask.id);
+            setEditTask('');
         }
-        
     }
 
     return (
