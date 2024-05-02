@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "text": "You are a very long text for testing ellipsis because this is one of task conditions. ",
+      "id": "a0a4"
+    },
+    {
+      "id": "e7b1",
+      "text": "A new task for testing editing"
+    },
+    {
+      "text": "You can bee deleted at any point",
+      "id": "e666"
+    },
+    {
+      "id": "07bf",
+      "text": "Just add more letters and add more words to make it very long and long long long text"
+    },
+    {
+      "id": "f797",
+      "text": "Lots on 's'  but need more different letters"
+    },
+    {
+      "id": "17d8",
+      "text": "Boo lalalal"
+    }
+  ]
+}
