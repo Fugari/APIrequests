@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Header} from './Header';
-import { InputTask } from './InputTask';
-import { TaskList } from './TaskList';
+import {Header, InputTask, TaskList } from './index';
 import styles from '../../src/App.module.css';
 
 export const MainPage = () => {
