@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../App.module.css';
 
-export const InputTask = ({ input, setInput, editTask, toAdd }) => {
-
-    useEffect(() => {
-        if(editTask) {
-            setInput(editTask.text);
-        } else {
-            setInput('');
-        }
-    }, [setInput, editTask]);
+export const InputTask = ({ input, setInput, toAdd }) => {
 
     const handleInput = (e) => {
         setInput(e.target.value);
@@ -29,7 +21,7 @@ export const InputTask = ({ input, setInput, editTask, toAdd }) => {
                 required
                 onChange={handleInput}
             />
-            <button className={styles.AddBtn} type='submit'> {editTask ? 'OK' : 'Add Task'} </button>
+            <button className={styles.AddBtn} type='submit'> Add Task </button>
         </form>
     )
 }
