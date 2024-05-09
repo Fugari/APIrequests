@@ -3,6 +3,7 @@ import {Header} from './components/Header';
 import { InputTask } from './components/InputTask';
 import { TaskList } from './components/TaskList';
 import styles from './App.module.css';
+import { AppContext } from './context';
 
 function App() {
   const [tasksList, setTaskList] = useState([]);
@@ -75,31 +76,29 @@ function App() {
   }, [tasksList]);
 
   return (
-    <div className={styles.App}>
-      <Header/>
+    <AppContext.Provider value={ {newValue, sortedTaskList, setNewValue} }>
+      <div className={styles.App}>
+        <Header />
+      
+        <InputTask
+          toAdd={toAddTask}
+          newTask={setTaskList}
+          editTask={editTask}
+          setEditTask={setEditTask}
+          updateTask={toEditTask}
+        />
+     
+        <button onClick={() => setSortFilter(!sortFilter)} className={sortFilter ? styles.FilterBtnActived : styles.FilterBtn}>Filter from A-Z</button>
 
-      <InputTask 
-        toAdd={toAddTask}
-        input={newValue}
-        setInput={setNewValue}
-        tasks={tasksList}
-        newTask={setTaskList}
-        editTask={editTask}
-        setEditTask={setEditTask}
-        updateTask={toEditTask}
-      />
-      <button onClick={() => setSortFilter(!sortFilter)} className={sortFilter ? styles.FilterBtnActived : styles.FilterBtn}>Filter from A-Z</button>
-
-      <input className={styles.SearchInput} placeholder='search for task' type='text' value={search} onChange={(e) => setSearch(e.target.value)}/>
-
-      <TaskList 
-        tasksList={sortedTaskList}
-        setTaskList={setTaskList}
-        setEditTask={setEditTask}
-        toDeleteTask={toDeleteTask}
-      />
-
-    </div>
+        <input className={styles.SearchInput} placeholder='search for task' type='text' value={search} onChange={(e) => setSearch(e.target.value)} />
+      
+        <TaskList
+          setEditTask={setEditTask}
+          toDeleteTask={toDeleteTask}
+        />
+      
+      </div>
+    </AppContext.Provider>
   );
 }
 
