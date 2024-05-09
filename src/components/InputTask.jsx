@@ -1,27 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styles from '../../src/App.module.css';
+import { AppContext } from '../context';
 
-export const InputTask = ({ input, setInput, editTask, setEditTask, toAdd, updateTask}) => {
-
+export const InputTask = ({ editTask, setEditTask, toAdd, updateTask }) => {
+    const { newValue, setNewValue } = useContext(AppContext);
+    
     useEffect(() => {
         if(editTask) {
-            setInput(editTask.text);
+            setNewValue(editTask.text);
         } else {
-            setInput('');
+            setNewValue('');
         }
-    }, [setInput, editTask]);
+    }, [setNewValue, editTask]);
 
     const handleInput = (e) => {
-        setInput(e.target.value);
+        setNewValue(e.target.value);
     }
 
     const toSubmitForm = (e) => {
         e.preventDefault();
         if(!editTask) {
             toAdd();
-            setInput('');
+            setNewValue('');
         } else {
-            updateTask(input, editTask.id);
+            updateTask(newValue, editTask.id);
             setEditTask('');
         }
     }
@@ -30,7 +32,7 @@ export const InputTask = ({ input, setInput, editTask, setEditTask, toAdd, updat
         <form className={styles.Form} onSubmit={toSubmitForm}>
             <input className={styles.Input} type="text" name="newTask"
                 placeholder='Type a new task...'
-                value={input}
+                value={newValue}
                 required
                 onChange={handleInput}
             />
