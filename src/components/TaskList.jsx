@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../../src/App.module.css';
+import { AppContext } from '../context';
 
 
-export const TaskList = ({ tasksList, setEditTask, toDeleteTask }) => {
+export const TaskList = ({ setEditTask, toDeleteTask }) => {
+    const { sortedTaskList } = useContext(AppContext);
 
     const toEditTask = ({ id }) => {
-        const findTask = tasksList.find((task) => task.id === id);
+        const findTask = sortedTaskList.find((task) => task.id === id);
         setEditTask(findTask);
     }
     return (
         <div >
-            {tasksList.map(({ id, text }) => (
+            {sortedTaskList.map(({ id, text }) => (
                 <div className={styles.List} key={id}>
                     {text}
                     <div>
